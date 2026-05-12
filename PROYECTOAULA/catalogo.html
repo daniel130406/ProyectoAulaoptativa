@@ -6,7 +6,6 @@
     <title>SPORTFET - Tienda Deportiva</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         :root {
             --primary: #1e3c72;
@@ -15,33 +14,24 @@
             --secondary: #f39c12;
             --secondary-dark: #e67e22;
             --accent: #e74c3c;
-            --light: #f8f9fa;
-            --dark: #2c3e50;
             --success: #27ae60;
-            --warning: #f1c40f;
             --danger: #e74c3c;
-            --info: #3498db;
-            --gray-100: #f8f9fa;
-            --gray-200: #e9ecef;
-            --gray-300: #dee2e6;
-            --gray-800: #343a40;
+            --warning: #f1c40f;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             background-attachment: fixed;
-            color: #333;
             padding-top: 80px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        /* Header Styles */
         .navbar {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
@@ -51,84 +41,30 @@
         
         .navbar-brand {
             font-weight: 700;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: white !important;
-            display: flex;
-            align-items: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .navbar-brand span {
             color: var(--secondary);
-            font-style: italic;
         }
         
-        .nav-link {
-            color: rgba(255, 255, 255, 0.9) !important;
-            font-weight: 500;
-            transition: all 0.3s;
-            margin: 0 8px;
-            position: relative;
-            font-size: 1.1rem;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            color: white !important;
-            transform: translateY(-2px);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary), var(--secondary-dark));
-            transition: width 0.3s;
-            border-radius: 3px;
-        }
-        
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200&h=400&fit=crop');
             background-size: cover;
             background-position: center;
-            padding: 100px 0;
-            color: white;
+            padding: 80px 0;
             border-radius: 20px;
             margin-bottom: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            animation: shine 6s infinite;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            color: white;
+            text-align: center;
         }
         
         .hero-section h1 {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            font-weight: 800;
+            font-size: 3rem;
+            font-weight: 700;
         }
         
-        /* Product Cards */
         .product-card {
             border: none;
             border-radius: 15px;
@@ -140,6 +76,11 @@
             position: relative;
         }
         
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
         .product-card::before {
             content: '';
             position: absolute;
@@ -147,156 +88,108 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             z-index: 1;
         }
         
-        .product-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        
-        .product-img-container {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-        }
-        
         .product-img {
+            height: 220px;
             width: 100%;
-            height: 100%;
             object-fit: cover;
-            transition: all 0.5s;
+            transition: transform 0.5s;
         }
         
         .product-card:hover .product-img {
-            transform: scale(1.1);
-        }
-        
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            z-index: 10;
-            padding: 8px 15px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        
-        .product-badge.sport {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
+            transform: scale(1.05);
         }
         
         .product-title {
             font-weight: 700;
             color: var(--primary);
-            height: 48px;
+            font-size: 1.1rem;
+            height: 50px;
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
-            font-size: 1.1rem;
         }
         
         .product-price {
             font-weight: 800;
             color: var(--secondary-dark);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
         
-        .product-old-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 0.9rem;
-        }
-        
-        .product-btn {
+        .btn-add-cart {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border: none;
             border-radius: 8px;
-            padding: 12px 20px;
+            padding: 10px;
             color: white;
             font-weight: 600;
-            transition: all 0.3s;
             width: 100%;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s;
         }
         
-        .product-btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+        .btn-add-cart:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30,60,114,0.3);
         }
         
-        .product-btn:hover::after {
-            width: 300px;
-            height: 300px;
+        .btn-add-cart:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
         }
         
-        .product-btn:hover {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        
-        .buy-btn {
+        .cart-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
             background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s;
         }
         
-        .buy-btn:hover {
-            background: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
+        .cart-float:hover {
+            transform: scale(1.1);
         }
         
-        .out-of-stock {
-            opacity: 0.7;
-            position: relative;
-            filter: grayscale(50%);
-        }
-        
-        .out-of-stock::after {
-            content: "AGOTADO";
+        .cart-badge {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-15deg);
+            top: -5px;
+            right: -5px;
             background: var(--danger);
             color: white;
-            padding: 10px 30px;
-            font-weight: 800;
-            border-radius: 30px;
-            font-size: 1.5rem;
-            z-index: 20;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            border: 2px solid white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
         }
         
-        /* Cart Styles */
         .cart-sidebar {
             position: fixed;
             top: 0;
-            right: -400px;
-            width: 400px;
+            right: -450px;
+            width: 450px;
             height: 100vh;
             background: white;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
-            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 1000;
+            z-index: 1001;
+            transition: right 0.3s;
             padding: 20px;
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
         }
         
         .cart-sidebar.open {
@@ -310,8 +203,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-            z-index: 999;
+            z-index: 1000;
             display: none;
         }
         
@@ -319,378 +211,50 @@
             display: block;
         }
         
-        /* Floating Cart */
-        .cart-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.4);
-            transition: all 0.3s;
-            cursor: pointer;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .cart-float:hover {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 15px 35px rgba(243, 156, 18, 0.6);
-        }
-        
-        .cart-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: var(--danger);
-            color: white;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-            border: 2px solid white;
-        }
-        
-        /* Features Section */
-        .features-section {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            filter: drop-shadow(0 5px 15px rgba(30, 60, 114, 0.3));
-        }
-        
-        .feature-title {
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(rgba(30, 60, 114, 0.95), rgba(30, 60, 114, 0.95)), url('https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
-            background-size: cover;
-            background-position: center;
-            border-radius: 20px;
-            padding: 50px;
-            color: white;
-            margin: 40px 0;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveBackground 20s linear infinite;
-        }
-        
-        @keyframes moveBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-        
-        .cta-title {
-            font-weight: 800;
-            margin-bottom: 20px;
-            font-size: 2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .whatsapp-btn {
-            background: #25D366;
-            border: none;
-            border-radius: 50px;
-            padding: 15px 40px;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-            animation: pulse 2s infinite;
-            text-decoration: none;
-        }
-        
-        .whatsapp-btn:hover {
-            background: #128C7E;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
-            color: white;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .whatsapp-link {
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
-            font-size: 1.1rem;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 30px;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s;
-        }
-        
-        .whatsapp-link:hover {
-            background: rgba(255,255,255,0.3);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 40px 0 20px;
-            margin-top: 60px;
-            position: relative;
-        }
-        
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 25px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary);
-            transform: translateY(-2px);
-        }
-        
-        .copyright {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-            margin-top: 20px;
-        }
-        
-        /* Category Filter */
-        .category-filter {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .category-btn {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border: none;
-            border-radius: 30px;
-            padding: 10px 25px;
-            margin: 5px;
-            transition: all 0.3s;
-            font-weight: 500;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        
-        .category-btn:hover, .category-btn.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(30, 60, 114, 0.3);
-        }
-        
-        /* Search Box */
-        .search-box {
-            position: relative;
-            margin-bottom: 20px;
-        }
-        
-        .search-box input {
-            border-radius: 50px;
-            padding-left: 50px;
-            border: 2px solid var(--gray-300);
-            height: 50px;
-            font-size: 1rem;
-            transition: all 0.3s;
-            background: white;
-        }
-        
-        .search-box input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.2);
-        }
-        
-        .search-box i {
-            position: absolute;
-            left: 20px;
-            top: 17px;
-            color: #6c757d;
-            font-size: 1.1rem;
-        }
-        
-        /* Quantity Controls */
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-        
-        .quantity-btn {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--gray-300);
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        .quantity-btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        .quantity-btn:first-child {
-            border-radius: 8px 0 0 8px;
-        }
-        
-        .quantity-btn:last-child {
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .quantity-input {
-            width: 60px;
-            height: 40px;
-            border: 1px solid var(--gray-300);
-            border-left: none;
-            border-right: none;
-            text-align: center;
-            -moz-appearance: textfield;
-            font-weight: 600;
-        }
-        
-        .quantity-input::-webkit-outer-spin-button,
-        .quantity-input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        
-        /* Cart Item Styles */
         .cart-item {
             display: flex;
             align-items: center;
             padding: 15px 0;
-            border-bottom: 1px solid var(--gray-200);
-            animation: slideIn 0.3s ease;
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
+            border-bottom: 1px solid #eee;
         }
         
         .cart-item-img {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             object-fit: cover;
             border-radius: 10px;
             margin-right: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
         .cart-item-details {
-            flex-grow: 1;
+            flex: 1;
         }
         
         .cart-item-title {
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 5px;
-            color: var(--primary);
         }
         
         .cart-item-price {
             color: var(--secondary-dark);
             font-weight: 700;
-            font-size: 1.1rem;
         }
         
         .cart-item-quantity {
             display: flex;
             align-items: center;
+            gap: 8px;
             margin-top: 8px;
         }
         
         .cart-item-quantity button {
-            width: 30px;
-            height: 30px;
-            border: 1px solid var(--gray-300);
+            width: 28px;
+            height: 28px;
+            border: 1px solid #ddd;
             background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.2s;
-            font-weight: bold;
         }
         
         .cart-item-quantity button:hover {
@@ -699,1001 +263,819 @@
             border-color: var(--primary);
         }
         
-        .cart-item-quantity input {
-            width: 45px;
-            height: 30px;
-            border: 1px solid var(--gray-300);
-            border-left: none;
-            border-right: none;
-            text-align: center;
-            -moz-appearance: textfield;
-            font-weight: 600;
-        }
-        
-        .cart-item-quantity input::-webkit-outer-spin-button,
-        .cart-item-quantity input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        
         .cart-item-remove {
             background: none;
             border: none;
             color: var(--danger);
             cursor: pointer;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             transition: all 0.2s;
-            padding: 8px;
         }
         
         .cart-item-remove:hover {
-            transform: scale(1.2);
-            color: #c0392b;
+            transform: scale(1.1);
         }
         
-        /* Cart Totals */
-        .cart-totals {
-            margin-top: auto;
-            padding-top: 20px;
-            border-top: 2px solid var(--gray-300);
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            border-radius: 10px;
+        .category-filter {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
             padding: 20px;
+            margin-bottom: 30px;
         }
         
-        .cart-total-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
+        .category-btn {
+            background: #f0f0f0;
+            border: none;
+            border-radius: 30px;
+            padding: 8px 20px;
+            margin: 5px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+        
+        .search-box {
+            margin-bottom: 30px;
+        }
+        
+        .search-box input {
+            border-radius: 50px;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
             font-size: 1rem;
         }
         
-        .cart-total-final {
-            font-weight: 800;
-            font-size: 1.3rem;
-            border-top: 2px solid var(--gray-300);
-            padding-top: 12px;
-            margin-top: 12px;
-            color: var(--primary);
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
         }
         
-        /* Notification */
-        .notification {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            z-index: 1050;
-            min-width: 350px;
-            opacity: 0;
-            transition: opacity 0.5s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            border-radius: 10px;
-            border: none;
-        }
-        
-        .notification.show {
-            opacity: 1;
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .navbar-brand {
-                font-size: 1.5rem;
-            }
-            
-            .product-title {
-                height: auto;
-            }
-            
-            .cta-section {
-                padding: 30px 20px;
-            }
-            
-            .cart-sidebar {
-                width: 100%;
-                right: -100%;
-            }
-            
-            .hero-section {
-                padding: 50px 0;
-            }
-            
-            .hero-section h1 {
-                font-size: 2rem;
-            }
-        }
-        
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 25px;
-            height: 25px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Product Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
-        /* Empty State */
-        .empty-state {
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1100;
+            min-width: 300px;
+            border-radius: 10px;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
             text-align: center;
-            padding: 60px 20px;
-            color: var(--gray-800);
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
-        .empty-state i {
-            font-size: 5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            opacity: 0.5;
+        .footer a {
+            color: var(--secondary);
+            text-decoration: none;
         }
         
-        /* Sport specific badges */
-        .sport-badge {
+        @media (max-width: 768px) {
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 15px;
+            }
+        }
+        
+        .out-of-stock {
+            opacity: 0.7;
+            position: relative;
+        }
+        
+        .out-of-stock::after {
+            content: "AGOTADO";
             position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            font-size: 1.2rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            background: rgba(231,76,60,0.95);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            z-index: 10;
+            white-space: nowrap;
+        }
+        
+        .stock-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
             z-index: 5;
         }
         
-        .sport-badge.futbol { color: var(--primary); }
-        .sport-badge.basket { color: var(--secondary-dark); }
-        .sport-badge.tenis { color: var(--success); }
-        .sport-badge.running { color: var(--info); }
+        .stock-low {
+            background: var(--warning);
+            color: #333;
+        }
+        
+        .stock-out {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .stock-ok {
+            background: var(--success);
+            color: white;
+        }
+        
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+        
+        .empty-cart i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .btn-checkout {
+            background: linear-gradient(135deg, var(--success), #219a52);
+            border: none;
+        }
+        
+        .btn-checkout:hover {
+            background: linear-gradient(135deg, #219a52, var(--success));
+        }
     </style>
 </head>
 <body>
-    <!-- Header/Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-futbol me-2"></i>SPORT<span>FET</span>
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#products"><i class="fas fa-box me-1"></i> Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-info-circle me-1"></i> Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-phone me-1"></i> Contacto</a>
-                    </li>
-                </ul>
-                
-                <div class="d-flex align-items-center ms-lg-3">
-                    <a href="https://web.facebook.com/?locale=es_LA&_rdc=1&_rdr#" class="text-white me-3">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://api.whatsapp.com/send?phone=573170296998&text=Quiero%20mas%20informacion%20de%20SPORTFET" class="text-white">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
+            <a class="navbar-brand" href="#"><i class="fas fa-futbol me-2"></i>SPORT<span>FET</span></a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <a href="https://api.whatsapp.com/send?phone=573170296998" class="text-white" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+                <a href="#" class="text-white" id="adminLink"><i class="fas fa-user-shield fa-lg"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
             </div>
         </div>
     </nav>
 
-    <!-- Floating Cart -->
+    <!-- Carrito flotante -->
     <div class="cart-float" id="cartButton">
-        <i class="fas fa-shopping-cart text-white fa-lg"></i>
-        <span class="cart-badge" id="cart-count">0</span>
+        <i class="fas fa-shopping-cart fa-2x text-white"></i>
+        <span class="cart-badge" id="cartCount">0</span>
     </div>
 
-    <!-- Cart Overlay -->
+    <!-- Overlay y Sidebar del carrito -->
     <div class="cart-overlay" id="cartOverlay"></div>
-
-    <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4><i class="fas fa-shopping-cart me-2" style="color: var(--primary);"></i>Tu Carrito Deportivo</h4>
-            <button class="btn-close" id="closeCart"></button>
+        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+            <h4><i class="fas fa-shopping-cart me-2"></i>Mi Carrito</h4>
+            <button class="btn-close" id="closeCartBtn"></button>
         </div>
-        
-        <div id="cart-items" class="flex-grow-1">
-            <!-- Cart items will be added here dynamically -->
-        </div>
-        
-        <div class="cart-totals">
-            <div class="cart-total-row">
+        <div id="cartItemsContainer"></div>
+        <div class="mt-3 pt-3 border-top" id="cartTotals">
+            <div class="d-flex justify-content-between mb-2">
                 <span>Subtotal:</span>
-                <span id="cart-subtotal">$0</span>
+                <span class="fw-bold" id="cartSubtotal">$0</span>
             </div>
-            <div class="cart-total-row">
+            <div class="d-flex justify-content-between mb-2">
                 <span>Envío:</span>
-                <span id="cart-shipping">$0</span>
+                <span id="cartShipping">$0</span>
             </div>
-            <div class="cart-total-row cart-total-final">
-                <span>Total:</span>
-                <span id="cart-total">$0</span>
+            <hr>
+            <div class="d-flex justify-content-between mb-3">
+                <span class="fs-5 fw-bold">Total:</span>
+                <span class="fs-5 fw-bold text-primary" id="cartTotal">$0</span>
             </div>
-            <button class="btn btn-primary w-100 mb-2" id="checkout-btn">
-                <i class="fas fa-credit-card me-2"></i>Finalizar Compra
+            <button class="btn btn-checkout w-100 py-2 text-white fw-bold" id="checkoutBtn">
+                <i class="fab fa-whatsapp me-2"></i>Comprar por WhatsApp
             </button>
-            <button class="btn btn-outline-secondary w-100" id="continue-shopping">
-                <i class="fas fa-shopping-bag me-2"></i>Seguir Comprando
+            <button class="btn btn-outline-secondary w-100 mt-2" id="clearCartBtn">
+                <i class="fas fa-trash-alt me-2"></i>Vaciar Carrito
             </button>
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="container">
         <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="row align-items-center">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-3 fw-bold mb-4">Equipa tu Pasión Deportiva</h1>
-                    <p class="lead mb-4">Encuentra el mejor equipamiento para tu deporte favorito. Calidad profesional y envío a todo el país.</p>
-                    <a href="#products" class="btn btn-primary btn-lg">
-                        <i class="fas fa-box-open me-2"></i>Ver Productos
-                    </a>
-                </div>
-            </div>
-        </section>
+        <div class="hero-section">
+            <h1 class="display-4 fw-bold">Equipa tu Pasión Deportiva</h1>
+            <p class="lead">Encuentra el mejor equipamiento para tu deporte favorito</p>
+            <a href="#products" class="btn btn-warning btn-lg mt-3">Ver Productos</a>
+        </div>
 
-        <!-- Category Filter -->
+        <!-- Filtros -->
         <div class="category-filter">
-            <h5 class="mb-3"><i class="fas fa-filter me-2" style="color: var(--primary);"></i>Filtrar por Deporte</h5>
-            <div class="d-flex flex-wrap">
-                <button class="category-btn active" data-category="all">Todos</button>
-                <button class="category-btn" data-category="Fútbol">⚽ Fútbol</button>
-                <button class="category-btn" data-category="Baloncesto">🏀 Baloncesto</button>
-                <button class="category-btn" data-category="Tenis">🎾 Tenis</button>
-                <button class="category-btn" data-category="Running">🏃 Running</button>
-                <button class="category-btn" data-category="Fitness">💪 Fitness</button>
-                <button class="category-btn" data-category="Natación">🏊 Natación</button>
-                <button class="category-btn" data-category="Ciclismo">🚴 Ciclismo</button>
-            </div>
+            <h5 class="mb-3"><i class="fas fa-filter me-2"></i>Filtrar por Deporte</h5>
+            <div id="categoryButtons" class="d-flex flex-wrap"></div>
         </div>
 
-        <!-- Search Box -->
+        <!-- Buscador -->
         <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" class="form-control" id="search-input" placeholder="Buscar productos deportivos...">
+            <input type="text" class="form-control" id="searchInput" placeholder="🔍 Buscar productos por nombre o deporte...">
         </div>
 
-        <!-- Products Grid -->
-        <div class="products-grid" id="products">
-            <!-- Products will be loaded dynamically -->
+        <!-- Loading -->
+        <div id="loadingSpinner" class="loading-spinner">
+            <div class="spinner"></div>
         </div>
 
-        <!-- Features Section -->
-        <div class="features-section">
-            <div class="row text-center">
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <i class="fas fa-truck feature-icon"></i>
-                    <h5 class="feature-title">Envío Gratis 🚚</h5>
-                    <p>Recibe tus productos sin costo adicional en compras superiores a $50.000</p>
-                </div>
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <i class="fas fa-shield-alt feature-icon"></i>
-                    <h5 class="feature-title">Compra Segura 🔒</h5>
-                    <p>Tu pago está protegido y tus datos están seguros con nosotros</p>
-                </div>
-                <div class="col-md-4">
-                    <i class="fas fa-home feature-icon"></i>
-                    <h5 class="feature-title">Paga en Casa 💲</h5>
-                    <p>Paga al recibir tu pedido, sin necesidad de anticipos</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h3 class="cta-title">¿Necesitas asesoría para elegir tu equipamiento?</h3>
-            <a href="https://api.whatsapp.com/send?phone=573170296998&text=Hola,%20estoy%20interesado%20en%20los%20productos%20de%20SPORTFET"  
-               target="_blank" class="whatsapp-btn">
-                <i class="fab fa-whatsapp"></i> ¡Compra Ahora!
-            </a>
-            <div class="mt-3">
-                <a href="https://api.whatsapp.com/send?phone=573170296998&text=Hola,%20estoy%20interesado%20en%20los%20productos%20de%20SPORTFET"  
-                   target="_blank" class="whatsapp-link">
-                    <i class="fab fa-whatsapp"></i> +57 317 0296998
-                </a>
-            </div>
-        </div>
-
-        <!-- Footer Links -->
-        <div class="footer-links">
-            <a href="#"><i class="fas fa-user-shield me-1"></i> Política de Privacidad</a>
-            <a href="#"><i class="fas fa-undo-alt me-1"></i> Política de Reembolso</a>
-            <a href="#"><i class="fas fa-truck me-1"></i> Políticas de Envío</a>
-            <a href="#"><i class="fas fa-file-contract me-1"></i> Términos del Servicio</a>
-        </div>
+        <!-- Productos -->
+        <div class="products-grid" id="productsGrid" style="display: none;"></div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <div class="footer">
         <div class="container">
-            <div class="copyright">
-                &copy; <script>document.write(new Date().getFullYear())</script> SPORTFET - Tienda Deportiva - Todos los derechos reservados
-            </div>
-        </div>
-    </footer>
-
-    <!-- Success Modal -->
-    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body text-center p-5">
-                    <i class="fas fa-check-circle text-success mb-4" style="font-size: 4rem;"></i>
-                    <h4 class="mb-3">¡Pedido Exitoso! 🎉</h4>
-                    <p class="mb-4">Tu pedido ha sido procesado correctamente. Te contactaremos pronto por WhatsApp para coordinar la entrega de tu equipamiento deportivo.</p>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continuar Comprando</button>
-                </div>
-            </div>
+            <p>&copy; 2024 SPORTFET - Tienda Deportiva - Todos los derechos reservados</p>
+            <p><i class="fab fa-whatsapp me-2"></i> WhatsApp: <a href="https://api.whatsapp.com/send?phone=573170296998" target="_blank">317 0296998</a></p>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Base de datos de productos deportivos
+    <script type="module">
+        // ==================== IMPORTAR FIREBASE ====================
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getFirestore, 
+            collection, 
+            addDoc, 
+            getDocs, 
+            doc, 
+            updateDoc, 
+            query, 
+            orderBy, 
+            Timestamp,
+            onSnapshot,
+            where
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBomIv1aFwlVtHxkKz-kboH58Bs98S_idg",
+            authDomain: "neivaconnect-marketplace.firebaseapp.com",
+            projectId: "neivaconnect-marketplace",
+            storageBucket: "neivaconnect-marketplace.firebasestorage.app",
+            messagingSenderId: "872541057568",
+            appId: "1:872541057568:web:fa8d50b159222bd394c245"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // ==================== VARIABLES GLOBALES ====================
         let products = [];
         let cart = [];
-        
-        // Inicializar la aplicación
-        document.addEventListener('DOMContentLoaded', function() {
-            // Cargar productos desde localStorage o usar datos de ejemplo
-            loadProducts();
-            
-            // Cargar carrito desde localStorage si existe
-            const savedCart = localStorage.getItem('sportCustomerCart');
-            if (savedCart) {
-                cart = JSON.parse(savedCart);
-                updateCartUI();
-            }
-            
-            // Configurar event listeners
-            document.getElementById('cartButton').addEventListener('click', openCart);
-            document.getElementById('closeCart').addEventListener('click', closeCart);
-            document.getElementById('cartOverlay').addEventListener('click', closeCart);
-            document.getElementById('continue-shopping').addEventListener('click', closeCart);
-            
-            document.getElementById('checkout-btn').addEventListener('click', function() {
-                processOrder();
-            });
-            
-            // Filtros de categoría
-            document.querySelectorAll('.category-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    // Quitar clase active de todos los botones
-                    document.querySelectorAll('.category-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    
-                    // Agregar clase active al botón clickeado
-                    this.classList.add('active');
-                    
-                    // Filtrar productos
-                    const category = this.getAttribute('data-category');
-                    filterProducts(category);
+        let currentCategory = 'all';
+        let searchTerm = '';
+        let unsubscribeProducts = null;
+
+        // ==================== FUNCIONES UTILITARIAS ====================
+        function formatCOP(value) {
+            return new Intl.NumberFormat('es-CO', { 
+                style: 'currency', 
+                currency: 'COP', 
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        function showNotification(message, type = 'success') {
+            const notif = document.createElement('div');
+            notif.className = `alert alert-${type} notification`;
+            notif.style.cssText = 'position: fixed; top: 100px; right: 20px; z-index: 9999; min-width: 300px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);';
+            notif.innerHTML = `
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'danger' ? 'exclamation-circle' : 'info-circle'} me-2"></i>
+                        <span>${message}</span>
+                    </div>
+                    <button type="button" class="btn-close" onclick="this.parentElement.parentElement.remove()"></button>
+                </div>
+            `;
+            document.body.appendChild(notif);
+            setTimeout(() => notif.remove(), 4000);
+        }
+
+        // ==================== REGISTRAR VENTA EN FIRESTORE ====================
+        async function registerSaleInFirestore(productId, quantity, productName, productPrice, total) {
+            try {
+                // Registrar en colección 'ventas'
+                await addDoc(collection(db, 'ventas'), {
+                    productId: productId,
+                    productName: productName,
+                    cantidad: quantity,
+                    precioUnitario: productPrice,
+                    subtotal: productPrice * quantity,
+                    iva: (productPrice * quantity) * 0.19,
+                    total: total,
+                    metodoPago: 'tienda_online',
+                    fecha: Timestamp.now(),
+                    usuario: 'Cliente Web',
+                    origen: 'catalogo'
                 });
-            });
-            
-            // Búsqueda de productos
-            document.getElementById('search-input').addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                filterProductsBySearch(searchTerm);
-            });
-        });
-        
-        // Cargar productos deportivos
-        function loadProducts() {
-            // Intentar cargar desde localStorage del sistema de inventario
-            const savedProducts = localStorage.getItem('sportInventoryProducts');
-            
-            if (savedProducts) {
-                products = JSON.parse(savedProducts);
-                displayProducts(products);
-            } else {
-                // Datos de ejemplo de productos deportivos
-                products = [
-                    { 
-                        id: 2001, 
-                        name: 'Balón de Fútbol Profesional', 
-                        category: 'Fútbol', 
-                        stock: 25, 
-                        price: 89990, 
-                        minStock: 5, 
-                        image: 'https://images.unsplash.com/photo-1614632537423-945e3e5b43f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-                        description: 'Balón oficial tamaño 5, cosido a mano, ideal para partidos profesionales',
-                        rating: 4.8,
-                        reviews: 156
-                    },
-                    { 
-                        id: 2002, 
-                        name: 'Zapatillas Running Pro', 
-                        category: 'Running', 
-                        stock: 15, 
-                        price: 249990, 
-                        minStock: 3, 
-                        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-                        description: 'Zapatillas con amortiguación avanzada, tallas 38-44',
-                        rating: 4.9,
-                        reviews: 89
-                    },
-                    { 
-                        id: 2003, 
-                        name: 'Raqueta de Tenis Carbono', 
-                        category: 'Tenis', 
-                        stock: 8, 
-                        price: 359990, 
-                        minStock: 2, 
-                        image: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-                        description: 'Raqueta profesional de grafito, incluye funda protectora',
-                        rating: 4.7,
-                        reviews: 45
-                    },
-                    { 
-                        id: 2004, 
-                        name: 'Camiseta Deportiva Transpirable', 
-                        category: 'Fitness', 
-                        stock: 0, 
-                        price: 59990, 
-                        minStock: 5, 
-                        image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-                        description: 'Camiseta de secado rápido, ideal para entrenamiento',
-                        rating: 4.5,
-                        reviews: 234
-                    },
-                    { 
-                        id: 2005, 
-                        name: 'Gorra Deportiva Ajustable', 
-                        category: 'Running', 
-                        stock: 30, 
-                        price: 29990, 
-                        minStock: 5, 
-                        image: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-                        description: 'Gorra con protección UV, material transpirable',
-                        rating: 4.6,
-                        reviews: 78
-                    },
-                    { 
-                        id: 2006, 
-                        name: 'Balón de Baloncesto', 
-                        category: 'Baloncesto', 
-                        stock: 12, 
-                        price: 129990, 
-                        minStock: 3, 
-                        image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-                        description: 'Balón oficial de baloncesto, tamaño 7, agarre superior',
-                        rating: 4.8,
-                        reviews: 67
-                    },
-                    { 
-                        id: 2007, 
-                        name: 'Gafas de Natación', 
-                        category: 'Natación', 
-                        stock: 20, 
-                        price: 45990, 
-                        minStock: 4, 
-                        image: 'https://images.unsplash.com/photo-1530549387789-4c1017266634?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-                        description: 'Gafas antivaho, lentes de policarbonato',
-                        rating: 4.4,
-                        reviews: 112
-                    },
-                    { 
-                        id: 2008, 
-                        name: 'Casco de Ciclismo', 
-                        category: 'Ciclismo', 
-                        stock: 7, 
-                        price: 189990, 
-                        minStock: 2, 
-                        image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-                        description: 'Casco aerodinámico con sistema de ventilación',
-                        rating: 4.9,
-                        reviews: 34
-                    }
-                ];
                 
-                localStorage.setItem('sportInventoryProducts', JSON.stringify(products));
-                displayProducts(products);
+                // Registrar movimiento de salida
+                await addDoc(collection(db, 'movimientos'), {
+                    type: 'exit',
+                    productId: productId,
+                    productName: productName,
+                    quantity: quantity,
+                    reason: 'venta',
+                    notes: 'Venta desde tienda online - Carrito de compras',
+                    fecha: Timestamp.now(),
+                    userEmail: 'cliente@web.com',
+                    user: 'Cliente Web'
+                });
+                
+                console.log(`✅ Venta registrada en Firestore: ${quantity} x ${productName}`);
+                return true;
+            } catch (error) {
+                console.error('Error al registrar venta:', error);
+                return false;
             }
         }
-        
-        // Mostrar productos en el catálogo
-        function displayProducts(productsToShow) {
-            const productsContainer = document.getElementById('products');
-            productsContainer.innerHTML = '';
+
+        // ==================== ACTUALIZAR STOCK EN FIRESTORE ====================
+        async function updateProductStockInFirestore(productId, newStock) {
+            try {
+                const productRef = doc(db, 'productos', productId);
+                await updateDoc(productRef, {
+                    stock: newStock,
+                    updatedAt: Timestamp.now()
+                });
+                return true;
+            } catch (error) {
+                console.error('Error al actualizar stock:', error);
+                return false;
+            }
+        }
+
+        // ==================== CARGAR PRODUCTOS DESDE FIRESTORE (TIEMPO REAL) ====================
+        function loadProductsFromFirestore() {
+            const loadingDiv = document.getElementById('loadingSpinner');
+            const productsGrid = document.getElementById('productsGrid');
             
-            if (productsToShow.length === 0) {
-                productsContainer.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-futbol"></i>
-                        <h4 class="text-muted">No se encontraron productos deportivos</h4>
-                        <p>Intenta con otros términos de búsqueda o categorías</p>
+            if (unsubscribeProducts) unsubscribeProducts();
+            
+            const q = query(collection(db, 'productos'), orderBy('createdAt', 'desc'));
+            
+            unsubscribeProducts = onSnapshot(q, (snapshot) => {
+                products = [];
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    products.push({ 
+                        id: doc.id, 
+                        ...data,
+                        stock: data.stock || 0,
+                        price: data.price || 0,
+                        name: data.name || 'Producto',
+                        category: data.category || 'General'
+                    });
+                });
+                
+                // Ocultar loading y mostrar productos
+                loadingDiv.style.display = 'none';
+                productsGrid.style.display = 'grid';
+                
+                // Renderizar todo
+                renderCategories();
+                renderProducts();
+                updateCartUI();
+                
+                console.log(`📦 Productos cargados: ${products.length}`);
+            }, (error) => {
+                console.error('Error al cargar productos:', error);
+                loadingDiv.innerHTML = '<div class="alert alert-danger">Error al cargar productos. Recarga la página.</div>';
+                showNotification('Error al conectar con la base de datos', 'danger');
+            });
+        }
+
+        // ==================== RENDERIZAR CATEGORÍAS ====================
+        function renderCategories() {
+            const categories = ['all', ...new Set(products.map(p => p.category).filter(c => c))];
+            const container = document.getElementById('categoryButtons');
+            container.innerHTML = '';
+            
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `category-btn ${currentCategory === cat ? 'active' : ''}`;
+                btn.textContent = cat === 'all' ? '🏆 Todos' : cat;
+                btn.onclick = () => {
+                    currentCategory = cat;
+                    renderCategories();
+                    renderProducts();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        // ==================== RENDERIZAR PRODUCTOS ====================
+        function renderProducts() {
+            let filtered = [...products];
+            
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === currentCategory);
+            }
+            
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filtered = filtered.filter(p => 
+                    p.name?.toLowerCase().includes(term) || 
+                    p.category?.toLowerCase().includes(term)
+                );
+            }
+            
+            const container = document.getElementById('productsGrid');
+            container.innerHTML = '';
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-12 text-center py-5 bg-white rounded-3">
+                        <i class="fas fa-futbol fa-3x text-muted mb-3"></i>
+                        <h4>No hay productos disponibles</h4>
+                        <p class="text-muted">Pronto tendremos más productos para ti</p>
                     </div>
                 `;
                 return;
             }
             
-            productsToShow.forEach(product => {
+            filtered.forEach(product => {
                 const isOutOfStock = product.stock === 0;
-                const isLowStock = product.stock > 0 && product.stock <= product.minStock;
+                const stockClass = isOutOfStock ? 'stock-out' : (product.stock <= 3 ? 'stock-low' : 'stock-ok');
+                const stockText = isOutOfStock ? 'AGOTADO' : (product.stock <= 3 ? `¡Últimos ${product.stock}!` : `${product.stock} uds`);
                 
-                const productCol = document.createElement('div');
-                productCol.className = 'product-card-container';
-                
-                // Emoji para el deporte
-                let sportEmoji = '';
-                switch(product.category) {
-                    case 'Fútbol': sportEmoji = '⚽'; break;
-                    case 'Baloncesto': sportEmoji = '🏀'; break;
-                    case 'Tenis': sportEmoji = '🎾'; break;
-                    case 'Running': sportEmoji = '🏃'; break;
-                    case 'Fitness': sportEmoji = '💪'; break;
-                    case 'Natación': sportEmoji = '🏊'; break;
-                    case 'Ciclismo': sportEmoji = '🚴'; break;
-                    default: sportEmoji = '⚽';
-                }
-                
-                productCol.innerHTML = `
-                    <div class="product-card ${isOutOfStock ? 'out-of-stock' : ''}">
-                        <div class="product-img-container">
-                            <img src="${product.image || 'https://via.placeholder.com/300x200?text=Producto+Deportivo'}" 
-                                 class="product-img" alt="${product.name}">
-                            <div class="sport-badge ${product.category.toLowerCase()}">${sportEmoji}</div>
-                            ${isLowStock && !isOutOfStock ? 
-                                `<span class="badge bg-warning product-badge">¡Últimas unidades!</span>` : 
-                                isOutOfStock ? 
-                                `<span class="badge bg-danger product-badge">Agotado</span>` :
-                                `<span class="badge bg-success product-badge">En stock</span>`
-                            }
+                const card = document.createElement('div');
+                card.className = `product-card ${isOutOfStock ? 'out-of-stock' : ''}`;
+                card.innerHTML = `
+                    <div class="stock-badge ${stockClass}">${stockText}</div>
+                    <img src="${product.image || 'https://via.placeholder.com/300x200?text=SportFet'}" class="product-img" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Producto'">
+                    <div class="card-body p-3">
+                        <h5 class="product-title">${product.name}</h5>
+                        <p class="text-muted small mb-2"><i class="fas fa-tag me-1"></i>${product.category}</p>
+                        <p class="text-muted small">${product.description?.substring(0, 60) || ''}${product.description?.length > 60 ? '...' : ''}</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3 mt-2">
+                            <span class="product-price">${formatCOP(product.price)}</span>
                         </div>
-                        <div class="card-body p-3">
-                            <h5 class="card-title product-title">${product.name}</h5>
-                            <p class="text-muted small mb-2">${product.category}</p>
-                            <p class="text-muted small mb-2">${product.description.substring(0, 50)}...</p>
-                            <div class="mb-2">
-                                ${getRatingStars(product.rating || 4.5)}
-                                <small class="text-muted ms-1">(${product.reviews || 0})</small>
+                        ${!isOutOfStock ? `
+                            <div class="d-flex gap-2 mb-2">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="window.changeQty('${product.id}', -1)">-</button>
+                                <input type="number" id="qty-${product.id}" value="1" min="1" max="${product.stock}" class="form-control form-control-sm text-center" style="width: 60px;">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="window.changeQty('${product.id}', 1)">+</button>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="product-price">$${product.price.toLocaleString()}</span>
-                                <span class="badge ${isOutOfStock ? 'bg-danger' : isLowStock ? 'bg-warning' : 'bg-success'}">
-                                    ${isOutOfStock ? 'Agotado' : `${product.stock} disponibles`}
-                                </span>
-                            </div>
-                            ${!isOutOfStock ? `
-                            <div class="quantity-controls mb-3">
-                                <button class="quantity-btn" onclick="decreaseQuantity(${product.id})">-</button>
-                                <input type="number" class="quantity-input" id="quantity-${product.id}" value="1" min="1" max="${product.stock}">
-                                <button class="quantity-btn" onclick="increaseQuantity(${product.id}, ${product.stock})">+</button>
-                            </div>
-                            <button class="btn product-btn buy-btn" onclick="addToCart(${product.id})">
-                                <i class="fas fa-cart-plus me-2"></i> Agregar al Carrito
+                            <button class="btn-add-cart" onclick="window.addToCart('${product.id}')">
+                                <i class="fas fa-cart-plus me-2"></i>Agregar al Carrito
                             </button>
-                            ` : `
+                        ` : `
                             <button class="btn btn-secondary w-100" disabled>
-                                <i class="fas fa-times-circle me-2"></i> Producto Agotado
+                                <i class="fas fa-times-circle me-2"></i>Agotado
                             </button>
-                            `}
-                        </div>
+                        `}
                     </div>
                 `;
-                
-                productsContainer.appendChild(productCol);
+                container.appendChild(card);
             });
         }
-        
-        // Generar estrellas de calificación
-        function getRatingStars(rating) {
-            let stars = '';
-            const fullStars = Math.floor(rating);
-            const hasHalfStar = rating % 1 >= 0.5;
-            
-            for (let i = 0; i < fullStars; i++) {
-                stars += '<i class="fas fa-star text-warning"></i>';
-            }
-            
-            if (hasHalfStar) {
-                stars += '<i class="fas fa-star-half-alt text-warning"></i>';
-            }
-            
-            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-            for (let i = 0; i < emptyStars; i++) {
-                stars += '<i class="far fa-star text-warning"></i>';
-            }
-            
-            return stars;
-        }
-        
-        // Aumentar cantidad de producto
-        function increaseQuantity(productId, maxStock) {
-            const quantityInput = document.getElementById(`quantity-${productId}`);
-            let quantity = parseInt(quantityInput.value);
-            
-            if (quantity < maxStock) {
-                quantityInput.value = quantity + 1;
-            } else {
-                showNotification('No hay suficiente stock disponible', 'warning');
-            }
-        }
-        
-        // Disminuir cantidad de producto
-        function decreaseQuantity(productId) {
-            const quantityInput = document.getElementById(`quantity-${productId}`);
-            let quantity = parseInt(quantityInput.value);
-            
-            if (quantity > 1) {
-                quantityInput.value = quantity - 1;
-            }
-        }
-        
-        // Agregar producto al carrito
-        function addToCart(productId) {
-            const quantityInput = document.getElementById(`quantity-${productId}`);
-            const quantity = parseInt(quantityInput.value);
-            
+
+        // ==================== CAMBIAR CANTIDAD EN INPUT ====================
+        window.changeQty = (productId, delta) => {
+            const input = document.getElementById(`qty-${productId}`);
+            if (!input) return;
+            let newVal = parseInt(input.value) + delta;
             const product = products.find(p => p.id === productId);
-            
-            if (!product) {
-                showNotification('Producto no encontrado', 'danger');
-                return;
+            if (product) {
+                newVal = Math.max(1, Math.min(newVal, product.stock));
             }
+            input.value = newVal;
+        };
+
+        // ==================== AGREGAR AL CARRITO ====================
+        window.addToCart = async (productId) => {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const qtyInput = document.getElementById(`qty-${productId}`);
+            const quantity = parseInt(qtyInput?.value || 1);
             
             if (quantity > product.stock) {
-                showNotification('No hay suficiente stock disponible', 'warning');
+                showNotification('No hay suficiente stock disponible', 'danger');
                 return;
             }
             
-            // Verificar si el producto ya está en el carrito
-            const existingItemIndex = cart.findIndex(item => item.id === productId);
+            // Verificar si ya está en el carrito
+            const existingIndex = cart.findIndex(item => item.id === productId);
             
-            if (existingItemIndex >= 0) {
-                // Actualizar cantidad si ya existe
-                const newQuantity = cart[existingItemIndex].quantity + quantity;
-                
-                if (newQuantity > product.stock) {
-                    showNotification('No puedes agregar más de lo disponible en stock', 'warning');
+            if (existingIndex >= 0) {
+                const newQty = cart[existingIndex].quantity + quantity;
+                if (newQty > product.stock) {
+                    showNotification('No hay suficiente stock', 'danger');
                     return;
                 }
-                
-                cart[existingItemIndex].quantity = newQuantity;
+                cart[existingIndex].quantity = newQty;
             } else {
-                // Agregar nuevo item al carrito
                 cart.push({
                     id: product.id,
                     name: product.name,
                     price: product.price,
                     image: product.image,
-                    quantity: quantity,
-                    maxStock: product.stock,
-                    category: product.category
+                    quantity: quantity
                 });
             }
             
-            // Actualizar stock en el inventario
-            updateProductStock(productId, -quantity);
+            // ACTUALIZAR STOCK EN FIRESTORE
+            const newStock = product.stock - quantity;
+            await updateProductStockInFirestore(productId, newStock);
+            
+            // Actualizar producto localmente
+            product.stock = newStock;
+            
+            // REGISTRAR VENTA EN FIRESTORE
+            const subtotal = product.price * quantity;
+            const iva = subtotal * 0.19;
+            const total = subtotal + iva;
+            await registerSaleInFirestore(productId, quantity, product.name, product.price, total);
             
             // Guardar carrito en localStorage
             localStorage.setItem('sportCustomerCart', JSON.stringify(cart));
             
-            // Actualizar UI del carrito
+            // Actualizar UI
             updateCartUI();
+            renderProducts();
+            showNotification(`${quantity} x ${product.name} agregado al carrito`, 'success');
+        };
+
+        // ==================== ACTUALIZAR CANTIDAD EN CARRITO ====================
+        window.updateCartQuantity = async (productId, delta) => {
+            const itemIndex = cart.findIndex(item => item.id === productId);
+            if (itemIndex === -1) return;
             
-            // Mostrar mensaje de confirmación
-            showNotification(`${quantity} ${product.name} agregado(s) al carrito`, 'success');
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
             
-            // Cerrar el carrito si está abierto
-            closeCart();
+            const newQty = cart[itemIndex].quantity + delta;
             
-            // Resetear cantidad a 1
-            quantityInput.value = 1;
-        }
-        
-        // Actualizar stock del producto
-        function updateProductStock(productId, quantityChange) {
-            // Encontrar el producto en el inventario
-            const productIndex = products.findIndex(p => p.id === productId);
-            
-            if (productIndex >= 0) {
-                // Actualizar stock
-                products[productIndex].stock += quantityChange;
-                
-                // Guardar cambios en localStorage
-                localStorage.setItem('sportInventoryProducts', JSON.stringify(products));
-                
-                // Actualizar maxStock en el carrito si el producto está allí
-                const cartItemIndex = cart.findIndex(item => item.id === productId);
-                if (cartItemIndex >= 0) {
-                    cart[cartItemIndex].maxStock = products[productIndex].stock;
-                }
-                
-                // Volver a mostrar productos para reflejar cambios de stock
-                const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
-                filterProducts(activeCategory);
+            if (newQty < 1) {
+                window.removeFromCart(productId);
+                return;
             }
-        }
-        
-        // Actualizar la UI del carrito
-        function updateCartUI() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartCount = document.getElementById('cart-count');
-            const cartSubtotal = document.getElementById('cart-subtotal');
-            const cartShipping = document.getElementById('cart-shipping');
-            const cartTotal = document.getElementById('cart-total');
             
-            // Actualizar contador del carrito
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
+            if (newQty > product.stock + cart[itemIndex].quantity) {
+                showNotification('No hay suficiente stock', 'warning');
+                return;
+            }
+            
+            // Ajustar stock en Firestore
+            const stockDelta = delta;
+            const newStock = product.stock - stockDelta;
+            await updateProductStockInFirestore(productId, newStock);
+            product.stock = newStock;
+            
+            cart[itemIndex].quantity = newQty;
+            localStorage.setItem('sportCustomerCart', JSON.stringify(cart));
+            
+            updateCartUI();
+            renderProducts();
+        };
+
+        // ==================== ELIMINAR DEL CARRITO ====================
+        window.removeFromCart = async (productId) => {
+            const itemIndex = cart.findIndex(item => item.id === productId);
+            if (itemIndex === -1) return;
+            
+            const item = cart[itemIndex];
+            const product = products.find(p => p.id === productId);
+            
+            if (product) {
+                // Devolver stock en Firestore
+                const newStock = product.stock + item.quantity;
+                await updateProductStockInFirestore(productId, newStock);
+                product.stock = newStock;
+            }
+            
+            cart.splice(itemIndex, 1);
+            localStorage.setItem('sportCustomerCart', JSON.stringify(cart));
+            
+            updateCartUI();
+            renderProducts();
+            showNotification('Producto eliminado del carrito', 'info');
+        };
+
+        // ==================== VACIAR CARRITO ====================
+        window.clearCart = async () => {
+            if (cart.length === 0) return;
+            
+            // Devolver todo el stock
+            for (const item of cart) {
+                const product = products.find(p => p.id === item.id);
+                if (product) {
+                    const newStock = product.stock + item.quantity;
+                    await updateProductStockInFirestore(item.id, newStock);
+                    product.stock = newStock;
+                }
+            }
+            
+            cart = [];
+            localStorage.removeItem('sportCustomerCart');
+            updateCartUI();
+            renderProducts();
+            showNotification('Carrito vaciado', 'info');
+        };
+
+        // ==================== ACTUALIZAR UI DEL CARRITO ====================
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const countSpan = document.getElementById('cartCount');
+            const subtotalSpan = document.getElementById('cartSubtotal');
+            const shippingSpan = document.getElementById('cartShipping');
+            const totalSpan = document.getElementById('cartTotal');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            countSpan.textContent = totalItems;
             
             if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `
-                    <div class="empty-state">
+                container.innerHTML = `
+                    <div class="empty-cart">
                         <i class="fas fa-shopping-cart"></i>
-                        <h4 class="text-muted">Tu carrito está vacío</h4>
-                        <p>¡Explora nuestros productos deportivos!</p>
+                        <p>Tu carrito está vacío</p>
+                        <button class="btn btn-primary btn-sm" onclick="window.closeCart()">Seguir comprando</button>
                     </div>
                 `;
-                
-                cartSubtotal.textContent = '$0';
-                cartShipping.textContent = '$0';
-                cartTotal.textContent = '$0';
-                
+                subtotalSpan.textContent = formatCOP(0);
+                shippingSpan.textContent = formatCOP(0);
+                totalSpan.textContent = formatCOP(0);
                 return;
             }
             
-            // Calcular subtotal
-            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            
-            // Calcular envío (gratis para compras mayores a $50,000)
-            const shipping = subtotal > 50000 ? 0 : 5000;
-            
-            // Calcular total
-            const total = subtotal + shipping;
-            
-            // Actualizar montos
-            cartSubtotal.textContent = `$${subtotal.toLocaleString()}`;
-            cartShipping.textContent = shipping === 0 ? 'Gratis' : `$${shipping.toLocaleString()}`;
-            cartTotal.textContent = `$${total.toLocaleString()}`;
-            
-            // Mostrar items del carrito
-            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+            container.innerHTML = '';
             
             cart.forEach(item => {
-                // Emoji para el deporte
-                let sportEmoji = '';
-                switch(item.category) {
-                    case 'Fútbol': sportEmoji = '⚽'; break;
-                    case 'Baloncesto': sportEmoji = '🏀'; break;
-                    case 'Tenis': sportEmoji = '🎾'; break;
-                    case 'Running': sportEmoji = '🏃'; break;
-                    case 'Fitness': sportEmoji = '💪'; break;
-                    case 'Natación': sportEmoji = '🏊'; break;
-                    case 'Ciclismo': sportEmoji = '🚴'; break;
-                    default: sportEmoji = '';
-                }
-                
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <img src="${item.image || 'https://via.placeholder.com/70x70?text=Producto'}" 
-                         alt="${item.name}" class="cart-item-img">
+                subtotal += item.price * item.quantity;
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <img src="${item.image || 'https://via.placeholder.com/60'}" class="cart-item-img" onerror="this.src='https://via.placeholder.com/60'">
                     <div class="cart-item-details">
-                        <div class="cart-item-title">${item.name} ${sportEmoji}</div>
-                        <div class="cart-item-price">$${item.price.toLocaleString()}</div>
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">${formatCOP(item.price)}</div>
                         <div class="cart-item-quantity">
-                            <button onclick="updateCartItemQuantity(${item.id}, ${item.quantity - 1})">-</button>
-                            <input type="number" value="${item.quantity}" min="1" max="${item.maxStock}" 
-                                   onchange="updateCartItemQuantity(${item.id}, parseInt(this.value))">
-                            <button onclick="updateCartItemQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                            <button onclick="window.updateCartQuantity('${item.id}', -1)">-</button>
+                            <span class="mx-2">${item.quantity}</span>
+                            <button onclick="window.updateCartQuantity('${item.id}', 1)">+</button>
                         </div>
                     </div>
-                    <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
-                        <i class="fas fa-trash"></i>
+                    <button class="cart-item-remove" onclick="window.removeFromCart('${item.id}')">
+                        <i class="fas fa-trash-alt"></i>
                     </button>
                 `;
-                
-                cartItemsContainer.appendChild(cartItem);
+                container.appendChild(div);
             });
-        }
-        
-        // Actualizar cantidad de item en el carrito
-        function updateCartItemQuantity(productId, newQuantity) {
-            if (newQuantity < 1) {
-                removeFromCart(productId);
-                return;
-            }
             
-            const itemIndex = cart.findIndex(item => item.id === productId);
+            const shipping = subtotal > 50000 ? 0 : 5000;
+            const total = subtotal + shipping;
             
-            if (itemIndex >= 0) {
-                const item = cart[itemIndex];
-                
-                if (newQuantity > item.maxStock) {
-                    showNotification('No hay suficiente stock disponible', 'warning');
-                    return;
-                }
-                
-                const quantityChange = newQuantity - item.quantity;
-                
-                // Actualizar cantidad en el carrito
-                cart[itemIndex].quantity = newQuantity;
-                
-                // Actualizar stock en el inventario
-                updateProductStock(productId, -quantityChange);
-                
-                // Guardar carrito actualizado en localStorage
-                localStorage.setItem('sportCustomerCart', JSON.stringify(cart));
-                
-                // Actualizar UI del carrito
-                updateCartUI();
-            }
+            subtotalSpan.textContent = formatCOP(subtotal);
+            shippingSpan.innerHTML = shipping === 0 ? '<span class="text-success">Gratis</span>' : formatCOP(shipping);
+            totalSpan.textContent = formatCOP(total);
         }
-        
-        // Eliminar producto del carrito
-        function removeFromCart(productId) {
-            // Encontrar el item en el carrito
-            const itemIndex = cart.findIndex(item => item.id === productId);
-            
-            if (itemIndex >= 0) {
-                const item = cart[itemIndex];
-                
-                // Devolver el stock al inventario
-                updateProductStock(productId, item.quantity);
-                
-                // Eliminar el item del carrito
-                cart.splice(itemIndex, 1);
-                
-                // Guardar carrito actualizado en localStorage
-                localStorage.setItem('sportCustomerCart', JSON.stringify(cart));
-                
-                // Actualizar UI del carrito
-                updateCartUI();
-                
-                // Mostrar mensaje
-                showNotification('Producto eliminado del carrito', 'info');
-            }
-        }
-        
-        // Abrir carrito
-        function openCart() {
-            document.getElementById('cartSidebar').classList.add('open');
-            document.getElementById('cartOverlay').classList.add('open');
-        }
-        
-        // Cerrar carrito
-        function closeCart() {
-            document.getElementById('cartSidebar').classList.remove('open');
-            document.getElementById('cartOverlay').classList.remove('open');
-        }
-        
-        // Procesar orden de compra
-        function processOrder() {
+
+        // ==================== FINALIZAR COMPRA ====================
+        window.checkout = () => {
             if (cart.length === 0) {
                 showNotification('El carrito está vacío', 'warning');
                 return;
             }
             
-            // Calcular total
-            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const shipping = subtotal > 50000 ? 0 : 5000;
             const total = subtotal + shipping;
             
-            // Crear mensaje para WhatsApp
-            let message = `¡Hola! Quiero realizar el siguiente pedido de artículos deportivos:%0A%0A`;
-            
-            cart.forEach(item => {
-                message += `• ${item.name} - ${item.quantity} x $${item.price.toLocaleString()} = $${(item.price * item.quantity).toLocaleString()}%0A`;
+            let message = "🛍️ *PEDIDO SPORTFET* 🛍️%0A%0A";
+            message += "*PRODUCTOS:*%0A";
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.name}%0A`;
+                message += `   Cantidad: ${item.quantity} x ${formatCOP(item.price)} = ${formatCOP(item.price * item.quantity)}%0A%0A`;
             });
+            message += `📦 *Subtotal:* ${formatCOP(subtotal)}%0A`;
+            message += `🚚 *Envío:* ${shipping === 0 ? 'Gratis' : formatCOP(shipping)}%0A`;
+            message += `💰 *TOTAL:* ${formatCOP(total)}%0A%0A`;
+            message += "*DATOS DEL CLIENTE:*%0A";
+            message += "Nombre: [Tu nombre completo]%0A";
+            message += "Dirección: [Tu dirección de entrega]%0A";
+            message += "Teléfono: [Tu número de contacto]%0A%0A";
+            message += "🔸 *Entregar a partir de las 8:00 AM* 🔸";
             
-            message += `%0ASubtotal: $${subtotal.toLocaleString()}%0A`;
-            message += `Envío: ${shipping === 0 ? 'Gratis' : `$${shipping.toLocaleString()}`}%0A`;
-            message += `*Total: $${total.toLocaleString()}*%0A%0A`;
-            message += `Mis datos de contacto:%0A`;
-            message += `Nombre: [Tu Nombre]%0A`;
-            message += `Dirección: [Tu Dirección]%0A`;
-            message += `Teléfono: [Tu Teléfono]`;
-            
-            // Abrir WhatsApp con el mensaje
             window.open(`https://api.whatsapp.com/send?phone=573170296998&text=${message}`, '_blank');
             
-            // Limpiar carrito después de procesar
+            // Limpiar carrito después de la compra (el stock ya se descontó al agregar)
             cart = [];
             localStorage.removeItem('sportCustomerCart');
-            
-            // Actualizar UI
             updateCartUI();
-            closeCart();
-            
-            // Mostrar modal de éxito
-            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-            successModal.show();
-        }
+            window.closeCart();
+            renderProducts();
+            showNotification('¡Gracias por tu compra! Te contactaremos pronto por WhatsApp', 'success');
+        };
+
+        // ==================== FUNCIONES UI DEL CARRITO ====================
+        window.openCart = () => {
+            document.getElementById('cartSidebar').classList.add('open');
+            document.getElementById('cartOverlay').classList.add('open');
+        };
         
-        // Filtrar productos por categoría
-        function filterProducts(category) {
-            if (category === 'all') {
-                displayProducts(products);
-                return;
+        window.closeCart = () => {
+            document.getElementById('cartSidebar').classList.remove('open');
+            document.getElementById('cartOverlay').classList.remove('open');
+        };
+
+        // ==================== EVENT LISTENERS ====================
+        document.getElementById('cartButton')?.addEventListener('click', window.openCart);
+        document.getElementById('closeCartBtn')?.addEventListener('click', window.closeCart);
+        document.getElementById('cartOverlay')?.addEventListener('click', window.closeCart);
+        document.getElementById('checkoutBtn')?.addEventListener('click', window.checkout);
+        document.getElementById('clearCartBtn')?.addEventListener('click', window.clearCart);
+        document.getElementById('searchInput')?.addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            renderProducts();
+        });
+        document.getElementById('adminLink')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'admin.html';
+        });
+
+        // ==================== CARGAR CARRITO GUARDADO ====================
+        function loadSavedCart() {
+            const savedCart = localStorage.getItem('sportCustomerCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartUI();
             }
-            
-            const filteredProducts = products.filter(product => product.category === category);
-            displayProducts(filteredProducts);
+        }
+
+        // ==================== INICIALIZAR ====================
+        function init() {
+            loadSavedCart();
+            loadProductsFromFirestore();
         }
         
-        // Filtrar productos por búsqueda
-        function filterProductsBySearch(searchTerm) {
-            if (!searchTerm) {
-                const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
-                filterProducts(activeCategory);
-                return;
-            }
-            
-            const filteredProducts = products.filter(product => 
-                product.name.toLowerCase().includes(searchTerm) || 
-                product.category.toLowerCase().includes(searchTerm) ||
-                product.description.toLowerCase().includes(searchTerm)
-            );
-            
-            displayProducts(filteredProducts);
-        }
+        // Hacer funciones globales
+        window.changeQty = window.changeQty;
+        window.addToCart = window.addToCart;
+        window.updateCartQuantity = window.updateCartQuantity;
+        window.removeFromCart = window.removeFromCart;
+        window.clearCart = window.clearCart;
+        window.checkout = window.checkout;
+        window.openCart = window.openCart;
+        window.closeCart = window.closeCart;
         
-        // Mostrar notificación
-        function showNotification(message, type = 'success') {
-            // Crear elemento de notificación
-            const notification = document.createElement('div');
-            notification.className = `alert alert-${type} notification`;
-            notification.innerHTML = `
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
-                    <span>${message}</span>
-                    <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
-                </div>
-            `;
-            
-            // Agregar al documento
-            document.body.appendChild(notification);
-            
-            // Mostrar con animación
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 10);
-            
-            // Ocultar después de 4 segundos
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 500);
-            }, 4000);
-        }
+        // Iniciar
+        init();
     </script>
 </body>
 </html>
